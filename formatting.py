@@ -40,7 +40,7 @@ def url_form(n):
 	settings = configparser.ConfigParser()
 
 	#reads in the ini file containing the defaults
-	settings.read('/home/pi/weather/settings.ini')
+	settings.read('your settings file')
 	
 	#specifies the weather underground url 
 	url_dest = settings['Settings']['url_dest']
