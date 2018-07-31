@@ -8,9 +8,8 @@ import serial
 class WeatherUtils:
 	
     ############## Engineering Data Calculations ################
-	def engr(units, eqn_input_dict = {}): 
+	def engr(units): 
 		Eng_data={}
-		new_eqns = eqn_input_dict
 		
 		#sets the CongfigParser class equal to settings
 		settings = configparser.ConfigParser()
