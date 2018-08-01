@@ -118,11 +118,9 @@ class WeatherAve:
 		
 			
 		
-	def ave(sum_m, inst, eqn_input_dict = {}):
+	def ave(sum_m, inst):
 		
 		ave={}
-		new_eqns = eqn_input_dict
-		new_str = '_new'
 		
 		#sets the ConfigParser equal to settings
 		settings = configparser.ConfigParser()
@@ -188,12 +186,6 @@ class WeatherAve:
 			#Counter
 			sum_m['cnt'] += 1
 			
-			#adds the new equations to the summation portion of the function.
-			if len(new_eqns) is not 0:
-				for key in new_eqns.keys():
-					sum_tool = key + new_str
-					sum_tool = inst[key]
-					sum_m[key] += sum_tool
 		
 			if ave['time'] >= sum_m['time_stop']:
 				
@@ -243,11 +235,6 @@ class WeatherAve:
 				#calculates and adds the largest wind gust that occured during the specified averaging period. 
 				ave['windgustmph'] = sum_m['windgustmph']
 				ave['windgustmph'] = float(format(ave['windgustmph'], '.2f'))
-				
-				#adds the new equation to the averaging portion of function.
-				if len(new_eqns) is not 0:
-					for key in new_eqns.keys():
-						ave[key] = sum_m[key] / sum_m['cnt']
 						
 				#reset the summations of the weather values. 
 				sum_m['windspeedmph'] = 0
@@ -264,9 +251,6 @@ class WeatherAve:
 				sum_m['time_start'] = time.time()
 				sum_m['time_stop'] = time.time() + (sum_m['ave_period']/2)
 				
-				if len(new_eqns) is not 0:
-					for key in new_eqns.keys():
-						sum_m[key] = 0
 						
 				return ave
 		
@@ -322,13 +306,6 @@ class WeatherAve:
 			
 			#Counter
 			sum_m['cnt'] += 1
-		
-			#adds the new equations to the summation portion of the function.
-			if len(new_eqns) is not 0:
-				for key in new_eqns.keys():
-					sum_tool = key + new_str
-					sum_tool = inst[key]
-					sum_m[key] += sum_tool
 					
 			if ave['time'] >= sum_m['time_stop']:
 				#calculates the wind speed over the specified averaging period.
@@ -381,11 +358,6 @@ class WeatherAve:
 				ave['windgustmph'] = sum_m['windgustmph']
 				ave['windgustmph'] = float(format(ave['windgustmph']))
 				
-				#adds the new equation to the averaging portion of function.
-				if len(new_eqns) is not 0:
-					for key in new_eqns.keys():
-						ave[key] = sum_m[key] / sum_m['cnt']
-				
 				#reset the summations of the weather values. 
 				sum_m['windspeedmph'] = 0
 				sum_m['winddir_sin'] = 0
@@ -402,10 +374,6 @@ class WeatherAve:
 				sum_m['time_start'] = time.time()
 				sum_m['time_stop'] = time.time() + (sum_m['ave_period']/2)
 				
-				if len(new_eqns) is not 0:
-					for key in new_eqns.keys():
-						sum_m[key] = 0
-						
 				return ave
 		
 		elif arg == 'NMEA':
@@ -444,13 +412,6 @@ class WeatherAve:
 			
 			#Counter
 			sum_m['cnt'] += 1
-			
-			#adds the new equations to the summation portion of the function.
-			if len(new_eqns) is not 0:
-				for key in new_eqns.keys():
-					sum_tool = key + new_str
-					sum_tool = inst[key]
-					sum_m[key] += sum_tool
 					
 			if ave['time'] >= sum_m['time_stop']:
 				#calculates the wind speed over the specified averaging period.
@@ -486,11 +447,6 @@ class WeatherAve:
 				
 				#calculates the largest wind gust during the specified averaging period.
 				ave['windgustmph'] = sum_m['windgustmph']
-				
-				#adds the new equation to the averaging portion of function.
-				if len(new_eqns) is not 0:
-					for key in new_eqns.keys():
-						ave[key] = sum_m[key] / sum_m['cnt']
 						
 				#resets the summations of the weather values.
 				sum_m['windspeedmph'] = 0
@@ -503,10 +459,6 @@ class WeatherAve:
 				sum_m['cnt'] = 0
 				sum_m['time_start'] = time.time()
 				sum_m['time_stop'] = time.time() + (sum_m['ave_period']/2)
-				
-				if len(new_eqns) is not 0:
-					for key in new_eqns.keys():
-						sum_m[key] = 0
 						
 				return ave
 		
@@ -547,13 +499,6 @@ class WeatherAve:
 			
 			#Counter
 			sum_m['cnt'] += 1
-			
-			#adds the new equations to the summation portion of the function.
-			if len(new_eqns) is not 0:
-				for key in new_eqns.keys():
-					sum_tool = key + new_str
-					sum_tool = inst[key]
-					sum_m[key] += sum_tool
 					
 			if ave['time'] >= sum_m['time_stop']:
 				#calculates the wind speed over the specified averaging period.
@@ -594,11 +539,6 @@ class WeatherAve:
 				#calculates the largest wind gust during the specified averaging period.
 				ave['windgustmph'] = sum_m['windgustmph']
 				ave['windgustmph'] = float(format(ave['windgustmph'], '.2f'))
-				
-				#adds the new equation to the averaging portion of function.
-				if len(new_eqns) is not 0:
-					for key in new_eqns.keys():
-						ave[key] = sum_m[key] / sum_m['cnt']
 						
 				#resets the summations of the weather values.
 				sum_m['windspeedmph'] = 0
@@ -612,10 +552,6 @@ class WeatherAve:
 				sum_m['cnt'] = 0
 				sum_m['time_start'] = time.time()
 				sum_m['time_stop'] = time.time() + (sum_m['ave_period']/2)
-				
-				if len(new_eqns) is not 0:
-					for key in new_eqns.keys():
-						sum_m[key] = 0
 						
 				return ave
 		else:
