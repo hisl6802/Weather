@@ -26,8 +26,6 @@ class WeatherUtils:
 		#puts the entire Equations section of the ini file into a useable dictionary
 		new_eqns = dict(settings['Equations'])
 		
-		
-		
 		if output == 'ASCII':
 			#wind speed (mph)
 			Eng_data["windspeedmph"] = 0.1097 * units[0]
@@ -56,48 +54,48 @@ class WeatherUtils:
 			#Calculates the Dew point temperature. 
 			Eng_data["dewptf"] = ((Eng_data["humidity"]/100)**(1/8)) * (112 + 0.9*Eng_data["tempf"]) + 0.1 * Eng_data["tempf"] - 112
 			
-			#Look for new equations from ini file
-			for key,value in new_eqns.items():
-				#have python evaluate the strings in the dictionary new_eqns
-				eval_input = eval(value)
+			##Look for new equations from ini file
+			#for key,value in new_eqns.items():
+				##have python evaluate the strings in the dictionary new_eqns
+				#eval_input = eval(value)
     
-				#Check to see if the input from ini file is a string.
-				type_check_str = isinstance(eval_input,str)
+				##Check to see if the input from ini file is a string.
+				#type_check_str = isinstance(eval_input,str)
     
-				#convert the output of isinstance to a string to check versus in 
-				#the conditional.
-				type_check_str = str(type_check_str)
+				##convert the output of isinstance to a string to check versus in 
+				##the conditional.
+				#type_check_str = str(type_check_str)
     
-				#If any of the keys are strings check to see if they match any of the
-				#weather outputs that are expected to be text for Weather Underground
-				#uploading.
-				if type_check is 'True':
-					if key == 'weather':
-					#insert this key into the engineering data dictionary
-					eng_data[key] = x
-					if key == 'clouds':
-					#insert this key into the engineering data dictionary 
-					eng_data[key] = x
-				else:
-					#check to see if evaluating the strings returned an integer
-					type_check_int = isinstance(eval_input, int)
+				##If any of the keys are strings check to see if they match any of the
+				##weather outputs that are expected to be text for Weather Underground
+				##uploading.
+				#if type_check is 'True':
+					#if key == 'weather':
+					##insert this key into the engineering data dictionary
+					#eng_data[key] = x
+					#if key == 'clouds':
+					##insert this key into the engineering data dictionary 
+					#eng_data[key] = x
+				#else:
+					##check to see if evaluating the strings returned an integer
+					#type_check_int = isinstance(eval_input, int)
         
-					#convert to string for checking in conditional
-					type_check_int = str(type_check_two)
+					##convert to string for checking in conditional
+					#type_check_int = str(type_check_two)
         
-					#if an int then add to the engineering data dictionary.
-					if type_check_int is 'True':
-					#add any of the evaluated inputs (eval_input) to the engineering 
-					#data dictionary with its corresponding key.
-					eng_data[key] = eval_input
+					##if an int then add to the engineering data dictionary.
+					#if type_check_int is 'True':
+					##add any of the evaluated inputs (eval_input) to the engineering 
+					##data dictionary with its corresponding key.
+					#eng_data[key] = eval_input
         
-					#check to see if the evaluated string is a float.
-					type_check_float = isinstance(eval_input,float)
+					##check to see if the evaluated string is a float.
+					#type_check_float = isinstance(eval_input,float)
         
-					#if a float then add to the engineering data dictionary. 
-					if type_check_float is 'True':
-					#add inputs to the engineering data dictionary.
-					eng_data[key] = eval_input
+					##if a float then add to the engineering data dictionary. 
+					#if type_check_float is 'True':
+					##add inputs to the engineering data dictionary.
+					#eng_data[key] = eval_input
 
 			
 			return Eng_data 
