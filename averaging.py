@@ -6,13 +6,12 @@ import configparser
 
 class WeatherAve:
 
-	def init(eqn_input_dict = {}):  
+	def init():  
 		'''This function initializes all of the values in the 
 		engineering data units,allowing them to averaged over
 		a specified period of time.'''
 		
 		init={}
-		new_eqns = eqn_input_dict
 		
 		#sets the ConfigParser equal to config
 		settings = configparser.ConfigParser()
@@ -25,6 +24,9 @@ class WeatherAve:
 		
 		#specifies the time period over which measurements will be taken.
 		ave_per = float(settings['Settings']['ave_period'])
+		
+		#pulls the dictionary of possible new eqns from the settings.ini file
+		new_eqns = dict(settings['Equations'])
 		
 		if arg == 'ASCII':
 			init['ave_period'] = ave_per * 2
@@ -41,10 +43,6 @@ class WeatherAve:
 			init['cnt'] = 0
 			init['time_start'] = time.time()
 			init['time_stop'] = time.time() + ave_per
-			
-			if len(new_eqns) is not 0:
-				for key in new_eqns.keys():
-					init[key] = 0
 			
 			return init
 		
@@ -65,9 +63,6 @@ class WeatherAve:
 			init['time_start'] = time.time()
 			init['time_stop'] = time.time() + ave_per
 			
-			if len(new_eqns) is not 0:
-				for key in new_eqns.keys():
-					init[key] = 0
 					
 			return init
 		
@@ -85,9 +80,6 @@ class WeatherAve:
 			init['time_start'] = time.time()
 			init['time_stop'] = time.time() + ave_per
 			
-			if len(new_eqns) is not 0:
-				for key in new_eqns.keys():
-					init[key] = 0
 			
 			return init
 		
@@ -106,9 +98,6 @@ class WeatherAve:
 			init['time_start'] = time.time()
 			init['time_stop'] = time.time() + ave_per
 			
-			if len(new_eqns) is not 0:
-				for key in new_eqns.keys():
-					init[key] = 0
 					
 			return init
 		
